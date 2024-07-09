@@ -66,3 +66,6 @@ subnet_1 = ec2.create_subnet(VpcId=vpc_id, CidrBlock='10.0.1.0/24', Availability
 subnet_2 = ec2.create_subnet(VpcId=vpc_id, CidrBlock='10.0.2.0/24', AvailabilityZone='us-east-1b')
 subnet_3 = ec2.create_subnet(VpcId=vpc_id, CidrBlock='10.0.3.0/24', AvailabilityZone='us-east-1c')
 
+print(f"Subnet 1 with id '{subnet_1['Subnet']['SubnetId']}' has been created in availability zone '{subnet_1['Subnet']['AvailabilityZone']}'")
+print(f"Subnet 1 with id '{subnet_2['Subnet']['SubnetId']}' has been created in availability zone '{subnet_2['Subnet']['AvailabilityZone']}'")
+print(f"Subnet 1 with id '{subnet_3['Subnet']['SubnetId']}' has been created in availability zone '{subnet_3['Subnet']['AvailabilityZone']}'")
