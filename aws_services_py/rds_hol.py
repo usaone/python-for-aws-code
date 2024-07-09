@@ -60,22 +60,9 @@ except rds.exceptions.DBSubnetGroupAlreadyInUse as e:
     print(f"DB subnet group '{db_subnet_group}' is already in use")
 
 # Wait for the DB cluster to become available
-counter = 0
-start_time = time.time()
-while True:
-    counter += 1
-    waiter = rds.get_waiter('db_cluster_available')
-    waiter.wait(DBClusterIdentifier=db_cluster_id)
-    if (rds.describe_db_clusters(DBClusterIdentifier=db_cluster_id)['DBClusters'][0]['Status'] == 'available'):
-        break
-    else:
-        print(f"DB Cluster '{db_cluster_id}' is not yet available. Waiting...")
-        # time.sleep(10)
-
+waiter = rds.get_waiter('db_cluster_available')
+waiter.wait(DBClusterIdentifier=db_cluster_id)
 print(f'DB Cluster is now available: {db_cluster_id}')
-print(f"The counter is at: {counter}")
-end_time = time.time()
-print(f"Time taken for the DB cluster to become available: {end_time - start_time} seconds")
 
 # Modify the DB cluster. Update the scaling configuration for the cluster
 response = rds.modify_db_cluster(
@@ -95,3 +82,15 @@ response = rds.delete_db_cluster(
     DBClusterIdentifier=db_cluster_id,
     SkipFinalSnapshot=True)
 print(f'DB Cluster is being deleted: {db_cluster_id}')
+
+# Wait for the DB cluster to be deleted
+start_time = time.time()
+waiter = rds.get_waiter('db_cluster_deleted')
+waiter.wait(DBClusterIdentifier=db_cluster_id)
+print(f'DB Cluster is now deleted: {db_cluster_id}')
+
+# Todo:
+# Create tables in the database
+# Add data to the tables
+# Query the tables
+# Drop the tables
