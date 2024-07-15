@@ -6,7 +6,7 @@
                     "name": "uddip-s3-billing-2024-07-12"
                 },
                 "object": {
-                    "key": "billing_data_dairy_may_2023.csv"
+                    "key": "billing_data_dairy_may_2023"
                 }
             }
         }

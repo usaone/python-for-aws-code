@@ -44,13 +44,13 @@ def lambda_handler(event, context):
         
     # If no errors were found, return a success message with status code 200 and a body message indicating that no errors were found
 
-    return {
-        'statusCode': 200,
-        'body': json.dumps('No errors found in the CSV file.')
-    }'
-    }
+    # return {
+    #     'statusCode': 200,
+    #     'body': json.dumps('No errors found in the CSV file.')
+    # }'
+    # }
 
-    return {
-        'statusCode': 200,
-        'body': json.dumps('Hello from Lambda!')
-    }
+    # return {
+    #     'statusCode': 200,
+    #     'body': json.dumps('Hello from Lambda!')
+    # }
