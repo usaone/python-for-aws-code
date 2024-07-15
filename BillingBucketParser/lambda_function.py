@@ -67,7 +67,10 @@ def lambda_handler(event, context):
                 'Bucket': billing_bucket, 
                 'Key': csv_file
             }
-        s3.Object(error_bucket, csv_file).copy_from(CopySource=f"{billing_bucket}/{csv_file}") # this line works but Eric showed a different way that I will try in the next line
+        # s3.Object(error_bucket, csv_file).copy_from(CopySource=f"{billing_bucket}/{csv_file}") # this line works but Eric showed a different way that I will try in the next line
+        s3.meta.client.copy(copy_source, error_bucket, csv_file)
+        print(f"Moved erroneous file {csv_file} to: {error_bucket}")
+        s3.meta.client.delete_object(Bucket=billing_bucket, Key=csv_file) # this line works but this time Eric used the s3.Object method that I will try in the next line
         
 
         # Handle any exception that may occur while moving the file, and print the error message
