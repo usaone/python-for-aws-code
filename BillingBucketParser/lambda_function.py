@@ -67,23 +67,21 @@ def lambda_handler(event, context):
                 'Bucket': billing_bucket, 
                 'Key': csv_file
             }
-        # s3.Object(error_bucket, csv_file).copy_from(CopySource=f"{billing_bucket}/{csv_file}") # this line works but Eric showed a different way that I will try in the next line
-        s3.meta.client.copy(copy_source, error_bucket, csv_file)
-        print(f"Moved erroneous file {csv_file} to: {error_bucket}")
-        s3.meta.client.delete_object(Bucket=billing_bucket, Key=csv_file) # this line works but this time Eric used the s3.Object method that I will try in the next line
-        
+        try:
+            # s3.Object(error_bucket, csv_file).copy_from(CopySource=f"{billing_bucket}/{csv_file}") # this line works but Eric showed a different way that I will try in the next line
+            s3.meta.client.copy(copy_source, error_bucket, csv_file) # this line also works
+            print(f"Moved erroneous file {csv_file} to: {error_bucket}")
+            # s3.meta.client.delete_object(Bucket=billing_bucket, Key=csv_file) # this line works but this time Eric used the s3.Object method that I will try in the next line
+            s3.Object(billing_bucket, csv_file).delete() # this line also works
+            print(f"Deleted original file from bucket.")
 
-        # Handle any exception that may occur while moving the file, and print the error message
-        
+            # Handle any exception that may occur while moving the file, and print the error message
+        except Exception as e:
+            print(f"Error while moving file: {str(e)}")
+
     # If no errors were found, return a success message with status code 200 and a body message indicating that no errors were found
-
-    # return {
-    #     'statusCode': 200,
-    #     'body': json.dumps('No errors found in the CSV file.')
-    # }'
-    # }
-
-    # return {
-    #     'statusCode': 200,
-    #     'body': json.dumps('Hello from Lambda!')
-    # }
+    else:
+        return {
+            'statusCode': 200,
+            'body': 'No errors found in the CSV file!'
+        }

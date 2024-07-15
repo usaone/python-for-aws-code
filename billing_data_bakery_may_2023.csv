@@ -1,4 +1,4 @@
-"id,company_name,country,city,product_line,item,bill_date,currency,bill_amount
+id,company_name,country,city,product_line,item,bill_date,currency,bill_amount
 1,Lone Star Bakery,US,Austin,Bakery,Texas Pecan Pie,2023-05-01,USD,1500.00
 2,Big D Doughnuts,US,Dallas,Bakery,Sourdough Donuts,2023-05-02,USD,1800.00
 3,Bayou Bagels,US,Houston,Bakery,Everything Bagels,2023-05-03,USD,2000.00

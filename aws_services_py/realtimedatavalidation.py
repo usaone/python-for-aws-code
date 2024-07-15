@@ -35,20 +35,20 @@ if not check_bucket_exists(bucket_name2):
 else:
     print(f'{bucket_name2} bucket already exists. No need to create a new one.')
 
-# # UPLOAD 'file_1' to the new bucket
-# file_1 = 'billing_data_bakery_may_2023.csv'
-# s3.Bucket(bucket_name1).upload_file(Filename=file_1, Key='billing_data_bakery_may_2023')
-# print(f'{file_1} has been uploaded to {bucket_name1} bucket.')
+# UPLOAD 'file_1' to the new bucket
+file_1 = 'billing_data_bakery_may_2023.csv'
+s3.Bucket(bucket_name1).upload_file(Filename=file_1, Key='billing_data_bakery_may_2023')
+print(f'{file_1} has been uploaded to {bucket_name1} bucket.')
 
 # UPLOAD 'file_2' to the new bucket
 file_2 = 'billing_data_dairy_may_2023.csv'
 s3.Bucket(bucket_name1).upload_file(Filename=file_2, Key='billing_data_dairy_may_2023')
 print(f'{file_2} has been uploaded to {bucket_name1} bucket.')
 
-# # UPLOAD 'file_3' to the new bucket
-# file_3 = 'billing_data_meat_may_2023.csv'
-# s3.Bucket(bucket_name1).upload_file(Filename=file_3, Key='billing_data_meat_may_2023')
-# print(f'{file_3} has been uploaded to {bucket_name1} bucket.')
+# UPLOAD 'file_3' to the new bucket
+file_3 = 'billing_data_meat_may_2023.csv'
+s3.Bucket(bucket_name1).upload_file(Filename=file_3, Key='billing_data_meat_may_2023')
+print(f'{file_3} has been uploaded to {bucket_name1} bucket.')
 
 # DELETE the bucket (the buckt should be empty.
 # bucket1 = s3.Bucket(bucket_name1)
