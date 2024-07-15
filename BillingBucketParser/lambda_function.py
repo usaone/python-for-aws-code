@@ -27,30 +27,4 @@ def lambda_handler(event, context):
 
     # Read the CSV content line by line using Python's CSV reader. Ignore the header line (data[1:])
     for row in csv.reader(data[1:], delimiter=','):
-        print(f"row: {row}")
-        # For each row, extract the product line, currency, bill amount, and date from the specific columns
-
-        # Check if the product line is valid. If not, set the error flag to true and print an error message
-
-        # Check if the currency is valid. If not, set the error flag to true and print an error message
-
-        # Check if the bill amount is negative. If so, set the error flag to true and print an error message
-
-        # Check if the date is in the correct format ('%Y-%m-%d'). If not, set the error flag to true and print an error message
-
-    # After checking all rows, if an error is found, copy the CSV file to the error bucket and delete it from the original bucket
-
-        # Handle any exception that may occur while moving the file, and print the error message
-        
-    # If no errors were found, return a success message with status code 200 and a body message indicating that no errors were found
-
-    # return {
-    #     'statusCode': 200,
-    #     'body': json.dumps('No errors found in the CSV file.')
-    # }'
-    # }
-
-    # return {
-    #     'statusCode': 200,
-    #     'body': json.dumps('Hello from Lambda!')
-    # }
+        print(f"row: {row}") # This program worked till here successfully
