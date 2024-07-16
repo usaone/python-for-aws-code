@@ -3,6 +3,36 @@
         {
             "type": "aws-sam",
             "request": "direct-invoke",
+            "name": "EC2snapshotLambda:lambda_function.lambda_handler (python3.12)",
+            "invokeTarget": {
+                "target": "code",
+                "projectRoot": "${workspaceFolder}/EC2snapshotLambda",
+                "lambdaHandler": "lambda_function.lambda_handler"
+            },
+            "lambda": {
+                "runtime": "python3.12",
+                "payload": {},
+                "environmentVariables": {}
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "EC2DailySnapshotLambda2ndTry:lambda_function.lambda_handler (python3.12)",
+            "invokeTarget": {
+                "target": "code",
+                "projectRoot": "${workspaceFolder}/EC2DailySnapshotLambda2ndTry",
+                "lambdaHandler": "lambda_function.lambda_handler"
+            },
+            "lambda": {
+                "runtime": "python3.12",
+                "payload": {},
+                "environmentVariables": {}
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
             "name": "BillingBucketParser:lambda_function.lambda_handler (python3.12)",
             "invokeTarget": {
                 "target": "code",
